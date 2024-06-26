@@ -13,7 +13,7 @@ const Header = () => {
   };
 
   return (
-    <header className="py-4 shadow-md h-[3.8rem] top-0 bg-light z-10 font-mono">
+    <header className="py-4 shadow-md h-[3.8rem] top-0 bg-transparent  font-mono">
       <div className="px-[3vw] mx-auto flex items-center justify-between">
         <div className="text-2xl md:text-4xl  ">Pranjal Birla</div>
         <nav className="gap-16 hidden sm:flex">
@@ -55,11 +55,12 @@ const Header = () => {
           </button>
 
           {isOpen && (
-            <div className="absolute text-dark bg-light shadow-md-b w-full top-[3.5rem] shadow-md left-0 z-50">
+            <div className="absolute bg-black shadow-md-b w-full top-[3.5rem] shadow-md left-0 z-50">
               <nav className="flex flex-col justify-center items-center space-y-4 px-4 pt-6 pb-8">
                 {navLinks?.map((link) => (
                   <li className="list-none" key={link.title}>
                     <Link href={link.path}>{link.title}</Link>
+                    <hr />
                   </li>
                 ))}
               </nav>
