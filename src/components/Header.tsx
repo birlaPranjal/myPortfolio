@@ -13,9 +13,9 @@ const Header = () => {
   };
 
   return (
-    <header className="py-4 shadow-md h-[3.8rem] top-0 bg-transparent  font-mono">
+    <header className="py-4 shadow-md h-[3.8rem] top-0 bg-transparent z-50 font-mono">
       <div className="px-[3vw] mx-auto flex items-center justify-between">
-        <div className="text-2xl md:text-4xl  ">Pranjal Birla</div>
+        <div className="text-2xl md:text-4xl">Pranjal Birla</div>
         <nav className="gap-16 hidden sm:flex">
           {navLinks?.map((link) => (
             <li className="list-none" key={link.title}>
@@ -33,7 +33,7 @@ const Header = () => {
                 width="30"
                 height="30"
                 viewBox="0 0 50 50"
-                className="pt-2 "
+                className="pt-2"
                 fill="white"
               >
                 <path d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"></path>
@@ -55,12 +55,12 @@ const Header = () => {
           </button>
 
           {isOpen && (
-            <div className="absolute bg-black shadow-md-b w-full top-[3.5rem] shadow-md left-0 z-50">
+            <div className="absolute bg-black shadow-md w-full top-[3.5rem] left-0 z-50">
               <nav className="flex flex-col justify-center items-center space-y-4 px-4 pt-6 pb-8">
                 {navLinks?.map((link) => (
                   <li className="list-none" key={link.title}>
                     <Link href={link.path}>{link.title}</Link>
-                    <hr />
+                    <hr className="w-full border-gray-700" />
                   </li>
                 ))}
               </nav>
@@ -68,20 +68,20 @@ const Header = () => {
           )}
         </div>
         <div className="hidden md:block">
-        <div className="flex">
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="30"
-              height="30"
-              fill="currentColor"
-            >
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-            </svg>
+          <div className="flex">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="30"
+                height="30"
+                fill="currentColor"
+              >
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5 2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+            </div>
+            <div>Indore</div>
           </div>
-          <div>Indore</div>
-        </div>
         </div>
       </div>
     </header>

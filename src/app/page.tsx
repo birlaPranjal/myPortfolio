@@ -19,7 +19,7 @@ export default function Home() {
     <div className="">
     <Image src={image} alt="abc" className="md:hidden px-10 pt-5 w-[70vw] sm:w-[60vw] h-[45vw] min-w-[350px] min-h-[300px] mx-auto rounded-2xl" />
     </div>
-    <div className="px-[5vw] font-mono pt-[5vw] md:pt-[3vw]">
+    <div className="px-[5vw] font-mono pt-[3vw] md:pt-[2vw]">
       <div className="flex flex-col md:flex-row justify-center">
         <div className="w-full md:w-7/12">
           <div className="text-[3rem] sm:text-[3.5rem] lg:text-[5.3rem] lg:pl-[2vw]">
@@ -45,13 +45,14 @@ export default function Home() {
         </div>
       </div>
       <hr className="mt-5 md:mt-0"/>
+      <Socials/>
     </div>
     <div>
       <BackgroundBeams className="-z-10"/>
     </div>
     <EduSkill/>
+    
     <Projects/>
-    <Socials/>
     <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Playwrite+NG+Modern&display=swap');
 

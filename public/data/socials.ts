@@ -6,22 +6,22 @@ import linkedin from '../assets/social/linkedin.svg';
 export const socials= [
   {
     name: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/your-profile',
+    link: 'https://www.linkedin.com/in/pranjal-birla',
     svg: linkedin
   },
   {
     name: 'Instagram',
-    link: 'https://www.instagram.com/your-profile',
+    link: 'https://instagram.com/pranjal_birla21',
     svg: insta
   },
   {
     name: 'Twitter',
-    link: 'https://twitter.com/your-profile',
+    link: 'https://x.com/pranjal_birla?t=AfW9qW4Uwcrbd1ky7MtBDQ&s=08',
     svg: twitter
   },
   {
     name: 'GitHub',
-    link: 'https://twitter.com/your-profile',
+    link: 'https://github.com/birlaPranjal',
     svg: github
   }
 ];
