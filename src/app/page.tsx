@@ -8,6 +8,7 @@ import Projects from "@/components/Projects";
 import {FlipWords} from "@/components/ui/flip-words"
 import Socials from "@/components/Socials"
 import EduSkill from "@/components/EduSkill";
+import {About} from "@/components/About";
 
 
 
@@ -53,8 +54,11 @@ export default function Home() {
     <EduSkill/>
     
     <Projects/>
+    <About/>
     <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Playwrite+NG+Modern&display=swap');
+import { CardStackDemo } from './../components/Certificate-stack';
+import Home from './page';
 
         .font-playwrite {
           font-family: "Playwrite AU SA";

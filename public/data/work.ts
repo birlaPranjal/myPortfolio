@@ -1,6 +1,6 @@
 export const skills = [
     {
-      title: "Stripe",
+      title: "Teamify",
       description:
         "A technology company that builds economic infrastructure for the internet.",
       link: "https://stripe.com",
