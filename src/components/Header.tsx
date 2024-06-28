@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header className="py-4 shadow-md h-[3.8rem] top-0 bg-transparent z-50 font-mono">
       <div className="px-[3vw] mx-auto flex items-center justify-between">
-        <div className="text-2xl md:text-4xl">Pranjal Birla</div>
+        <div className="text-2xl md:text-4xl">Pranjal Birla Trial</div>
         <nav className="gap-16 hidden sm:flex">
           {navLinks?.map((link) => (
             <li className="list-none" key={link.title}>
