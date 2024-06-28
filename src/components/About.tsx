@@ -9,7 +9,7 @@ export function About() {
   }));
 
   return (
-    <div className="px-[5vw] w-[93vw] lg:px-0 overflow-hidden flex items-start justify-evenly flex-wrap glap-5 ">
+    <div id='about' className="px-[5vw] w-[93vw] lg:px-0 overflow-hidden flex items-start justify-evenly flex-wrap glap-5 ">
       <div className=" md:w-2/5 lg:w-[55%] ">
         <div className="text-2xl font-bold mb-4">About Me</div>
         <div className="text-gray-400 px-4">

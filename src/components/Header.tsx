@@ -1,15 +1,36 @@
 "use client";
 import React, { useState } from "react";
-import navLinks from "@/../public/data/link";
+import navLinks from "../../public/data/link"
+import  {useRouter}  from "next/navigation";
 
-import Link from "next/link";
-
-const Header = () => {
+const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [views, setViews] = useState(0);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleScroll = async (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, path: string) => {
+    e.preventDefault();
+    if (path.startsWith('/#')) {
+      const targetId = path.substring(2);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      await router.push(path);
+      if (path.includes('#')) {
+        const targetId = path.split('#')[1];
+        setTimeout(() => {
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    }
   };
 
   return (
@@ -18,8 +39,10 @@ const Header = () => {
         <div className="text-2xl md:text-4xl">Pranjal Birla</div>
         <nav className="gap-16 hidden sm:flex">
           {navLinks?.map((link) => (
-            <li className="list-none" key={link.title}>
-              <Link href={link.path}>{link.title}</Link>
+            <li className="list-none z-50" key={link.title}>
+              <a href={link.path} onClick={(e) => handleScroll(e, link.path)}>
+                {link.title}
+              </a>
             </li>
           ))}
         </nav>
@@ -58,8 +81,10 @@ const Header = () => {
             <div className="absolute bg-black shadow-md w-full top-[3.5rem] left-0 z-50">
               <nav className="flex flex-col justify-center items-center space-y-4 px-4 pt-6 pb-8">
                 {navLinks?.map((link) => (
-                  <li className="list-none" key={link.title}>
-                    <Link href={link.path}>{link.title}</Link>
+                  <li className="list-none z-50" key={link.title}>
+                    <a href={link.path} onClick={(e) => handleScroll(e, link.path)}>
+                      {link.title}
+                    </a>
                     <hr className="w-full border-gray-700" />
                   </li>
                 ))}
@@ -77,7 +102,7 @@ const Header = () => {
                 height="30"
                 fill="currentColor"
               >
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5 2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z" />
               </svg>
             </div>
             <div>Indore</div>
