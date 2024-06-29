@@ -84,10 +84,8 @@ const Header: React.FC = () => {
                     <FaEye className="text-xl" />
                     <AnimatedNumbers
                       animateToNumber={count}
-                      fontStyle={{ fontSize: 24 }}
-                      configs={(number, index) => {
-                        return { mass: 1, tension: 230 * (index + 1), friction: 140 };
-                      }}
+                      fontStyle={{ fontSize: 20 }}
+                      
                     />
                   </div>
                 </div>
@@ -140,10 +138,8 @@ const Header: React.FC = () => {
             <FaEye className="text-xl" />
             <AnimatedNumbers
               animateToNumber={count}
-              fontStyle={{ fontSize: 24 }}
-              configs={(number, index) => {
-                return { mass: 1, tension: 230 * (index + 1), friction: 140 };
-              }}
+              fontStyle={{ fontSize: 20 }}
+              
             />
           </div>
         </div>
