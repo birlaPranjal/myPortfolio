@@ -44,7 +44,7 @@ const ViewCount: React.FC = () => {
         animateToNumber={count}
         fontStyle={{ fontSize: 20 }}
       /> */}
-      <div className='text-[1.4rem]'>{count}</div>
+      <div className='text-sm md:text-[1.4rem]'>{count}</div>
     </div>
   );
 };
