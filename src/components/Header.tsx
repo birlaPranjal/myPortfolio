@@ -1,11 +1,14 @@
 "use client";
-import React, { useState } from "react";
-import navLinks from "../../public/data/link"
-import  {useRouter}  from "next/navigation";
-import ViewCountWrapper from "./ViewCountWrapper";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { FaEye } from "react-icons/fa";
+import AnimatedNumbers from "react-animated-numbers";
+import axios from "axios";
+import navLinks from "../../public/data/link";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [count, setCount] = useState<number>(0);
   const router = useRouter();
 
   const toggleMenu = () => {
@@ -34,6 +37,30 @@ const Header: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    // Fetch the current view count
+    const fetchCount = async () => {
+      try {
+        const response = await axios.get("/api/views");
+        setCount(response.data.count);
+      } catch (error) {
+        console.error("Error fetching view count:", error);
+      }
+    };
+
+    // Increment the view count
+    const incrementCount = async () => {
+      try {
+        await axios.post("/api/views", { count: count + 1 });
+      } catch (error) {
+        console.error("Error updating view count:", error);
+      }
+    };
+
+    fetchCount();
+    incrementCount();
+  }, []); // Empty dependency array to run only once
+
   return (
     <header className="py-4 shadow-md h-[3.8rem] top-0 bg-transparent z-50 font-mono">
       <div className="px-[3vw] mx-auto flex items-center justify-between">
@@ -52,25 +79,29 @@ const Header: React.FC = () => {
           <button onClick={toggleMenu}>
             {!isOpen ? (
               <div className='flex'>
-              <div className="block sm:hidden">
-          <div className="flex">
-            <ViewCountWrapper/>
-          </div>
-        </div>
+                <div className="block sm:hidden">
+                  <div className="flex items-center space-x-2">
+                    <FaEye className="text-xl" />
+                    <AnimatedNumbers
+                      animateToNumber={count}
+                      fontStyle={{ fontSize: 20 }}
+                      
+                    />
+                  </div>
+                </div>
                 <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="30"
-                height="30"
-                viewBox="0 0 50 50"
-                className="pt-2"
-                fill="white"
-              >
-                <path d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"></path>
-              </svg>
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 50 50"
+                  className="pt-2"
+                  fill="white"
+                >
+                  <path d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"></path>
+                </svg>
               </div>
-              
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -103,8 +134,13 @@ const Header: React.FC = () => {
           )}
         </div>
         <div className="hidden sm:block">
-          <div className="flex">
-            <ViewCountWrapper/>
+          <div className="flex items-center space-x-2">
+            <FaEye className="text-xl" />
+            <AnimatedNumbers
+              animateToNumber={count}
+              fontStyle={{ fontSize: 20 }}
+              
+            />
           </div>
         </div>
       </div>
