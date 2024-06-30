@@ -4,6 +4,7 @@ import navLinks from "../../public/data/link"
 import  {useRouter}  from "next/navigation";
 import ViewCountWrapper from "./ViewCountWrapper";
 
+
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
