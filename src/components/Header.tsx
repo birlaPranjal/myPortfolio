@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import navLinks from "../../public/data/link"
 import  {useRouter}  from "next/navigation";
+import ViewCountWrapper from "./ViewCountWrapper";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,10 +47,17 @@ const Header: React.FC = () => {
             </li>
           ))}
         </nav>
+
         <div className="sm:hidden">
           <button onClick={toggleMenu}>
             {!isOpen ? (
-              <svg
+              <div className='flex'>
+              <div className="block sm:hidden">
+          <div className="flex">
+            <ViewCountWrapper/>
+          </div>
+        </div>
+                <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
@@ -61,6 +69,8 @@ const Header: React.FC = () => {
               >
                 <path d="M 3 9 A 1.0001 1.0001 0 1 0 3 11 L 47 11 A 1.0001 1.0001 0 1 0 47 9 L 3 9 z M 3 24 A 1.0001 1.0001 0 1 0 3 26 L 47 26 A 1.0001 1.0001 0 1 0 47 24 L 3 24 z M 3 39 A 1.0001 1.0001 0 1 0 3 41 L 47 41 A 1.0001 1.0001 0 1 0 47 39 L 3 39 z"></path>
               </svg>
+              </div>
+              
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -92,20 +102,9 @@ const Header: React.FC = () => {
             </div>
           )}
         </div>
-        <div className="hidden md:block">
+        <div className="hidden sm:block">
           <div className="flex">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="30"
-                height="30"
-                fill="currentColor"
-              >
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5 2.5 2.5-1.12 2.5-2.5-1.12-2.5-2.5-2.5z" />
-              </svg>
-            </div>
-            <div>Indore</div>
+            <ViewCountWrapper/>
           </div>
         </div>
       </div>
