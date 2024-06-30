@@ -12,6 +12,7 @@ import {About} from "@/components/About";
 
 
 
+
 export default function Home() {
   const words = ["MERN", "Full"];
   const resumeLink = "https://drive.google.com/file/d/1VeQcs1VgYstEHx8EL5eIqbuazS8JsmPR/view?usp=sharing"; 

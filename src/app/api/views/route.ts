@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/config/dbConnect';
-import ViewModel from '@/models/viewModel';
-
-dbConnect();
+import ViewModel from '@/models/Views';
+import { dbConnect } from '@/config/dbConfig';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
+    await dbConnect();
     try {
         const view = await ViewModel.findOne();
         if (view) {
@@ -15,11 +14,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         }
         return NextResponse.json({ message: 'View count updated' });
     } catch (error) {
+        console.error('Error updating view count:', error);
         return NextResponse.json({ error: "Error occurred" }, { status: 500 });
     }
 }
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
+    await dbConnect();
     try {
         const view = await ViewModel.findOne();
         if (view) {
@@ -28,6 +29,7 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
             return NextResponse.json({ count: 0 });
         }
     } catch (error) {
+        console.error('Error fetching view count:', error);
         return NextResponse.json({ error: "Error occurred" }, { status: 500 });
     }
 }
