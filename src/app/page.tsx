@@ -27,7 +27,7 @@ export default function Home() {
           <div className="text-[3rem] sm:text-[3.5rem] lg:text-[5.3rem] lg:pl-[2vw]">
           <FlipWords words={words} />-Stack
           </div>
-          <div className="text-[3rem] sm:text-[3.5rem] lg:text-[5.3rem] -mt-5 lg:-mt-10 min-ml-[9vw] ml-[20vw] sm:ml-[30vw]">
+          <div className="text-[3rem] sm:text-[3.5rem] lg:text-[5.3rem] -mt-5 md:-mt-9 lg:-mt-14 min-ml-[9vw] ml-[20vw] sm:ml-[30vw]">
             Developer
           </div>
           <div className="font-playwrite text-[1rem] sm:text-[1.12rem] lg:text-[1.25rem] pt-[12vw] md:pt-14 -mt-[10vw] md:-mt-[12vw] lg:-mt-[10vw] xl:lg:-mt-[9vw] md:w-[28vw] lg:pl-[2vw] font-playwriteNgModern">
