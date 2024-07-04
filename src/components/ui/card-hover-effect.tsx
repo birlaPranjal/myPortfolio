@@ -71,7 +71,7 @@ const Tags = ({ tags }: { tags?: string[] }) => {
   return (
     <div className="flex flex-wrap gap-2 mb-2">
       {tags.map((tag, index) => (
-        <span key={index} className="bg-black/50 text-white text-xs px-2 py-1 rounded">
+        <span key={index} className="bg-gray-500 text-white text-xs px-2 py-1 rounded">
           {tag}
         </span>
       ))}

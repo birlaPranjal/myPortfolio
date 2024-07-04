@@ -56,6 +56,7 @@ export default function Home() {
     
     <Projects/>
     <About/>
+    
     <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&family=Playwrite+NG+Modern&display=swap');
 import { CardStackDemo } from './../components/Certificate-stack';
