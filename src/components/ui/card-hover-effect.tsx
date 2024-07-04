@@ -3,12 +3,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 
+import Image, { StaticImageData } from "next/image";
+
 export const HoverEffect = ({
   items,
   className,
 }: {
   items: {
     title: string;
+    img?: string;
+    tags?: string[];
     description: string;
     link: string;
   }[];
@@ -48,7 +52,7 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
+          <Card img={item?.img}>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
@@ -58,22 +62,28 @@ export const HoverEffect = ({
   );
 };
 
+
 export const Card = ({
   className,
   children,
+  img = ""
 }: {
   className?: string;
   children: React.ReactNode;
+  img?: string ;
 }) => {
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-3xl h-full w-full overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
         className
       )}
     >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
+      <div className="relative z-50 ">
+        <div className="">
+        <img src={img} alt=""  className="opacity-85 hover:opacity-30 " />
+          {children}
+          </div>
       </div>
     </div>
   );
