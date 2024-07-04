@@ -2,8 +2,7 @@ import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 export const HoverEffect = ({
   items,
@@ -19,11 +18,11 @@ export const HoverEffect = ({
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+  
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10",
         className
       )}
     >
@@ -31,14 +30,15 @@ export const HoverEffect = ({
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          target="_blank"
+          className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full  bg-slate-800/[0.8] block rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -52,25 +52,47 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card img={item?.img}>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </Card>
+          <Card 
+            img={item?.img} 
+            tags={item?.tags} 
+            isHovered={hoveredIndex === idx}
+            title={item.title}
+            description={item.description}
+          />
         </Link>
       ))}
     </div>
   );
 };
 
+const Tags = ({ tags }: { tags?: string[] }) => {
+  if (!tags || tags.length === 0) return null;
+  
+  return (
+    <div className="flex flex-wrap gap-2 mb-2">
+      {tags.map((tag, index) => (
+        <span key={index} className="bg-black/50 text-white text-xs px-2 py-1 rounded">
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+};
 
 export const Card = ({
   className,
-  children,
-  img = ""
+  img = "",
+  tags,
+  isHovered,
+  title,
+  description
 }: {
   className?: string;
-  children: React.ReactNode;
-  img?: string ;
+  img?: string;
+  tags?: string[];
+  isHovered: boolean;
+  title: string;
+  description: string;
 }) => {
   return (
     <div
@@ -79,43 +101,35 @@ export const Card = ({
         className
       )}
     >
-      <div className="relative z-50 ">
-        <div className="">
-        <img src={img} alt=""  className="opacity-85 hover:opacity-30 " />
-          {children}
-          </div>
+      <div className="relative z-20 h-full">
+        <img 
+          src={img} 
+          alt={title} 
+          className={cn("w-full h-full object-cover" , isHovered ? " opacity-20" : "opacity-90")}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t  from-black  to-transparent  opacity-60" />
+        <div className="absolute inset-0 flex flex-col justify-between p-4">
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="z-30"
+              >
+                <p className="text-zinc-100 tracking-wide leading-relaxed text-sm mb-2">
+                  {description}
+                </p>
+                <Tags tags={tags} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <h4 className={cn("text-zinc-100 font-bold tracking-wide text-lg z-30" , isHovered ? "mt-0" : "mt-40")}>
+            {title}
+          </h4>
+        </div>
       </div>
     </div>
-  );
-};
-export const CardTitle = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
-      {children}
-    </h4>
-  );
-};
-export const CardDescription = ({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) => {
-  return (
-    <p
-      className={cn(
-        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
-        className
-      )}
-    >
-      {children}
-    </p>
   );
 };
