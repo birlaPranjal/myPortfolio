@@ -36,7 +36,7 @@ export default function Footer() {
   };
 
   const socialsVariants = {
-    hidden: { y: '100vh', opacity: 0 },
+    hidden: { y: '20vh', opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
@@ -47,7 +47,7 @@ export default function Footer() {
   return (
     <motion.div 
       ref={ref}
-      className="my-20"
+      className="my-20 overflow-hidden"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
