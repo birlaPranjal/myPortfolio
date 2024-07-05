@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -7,26 +8,53 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("");
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // Handle form submission logic here
-    // For example, send the form data to a server or display a success message
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
-      <div className="w-full max-w-md p-8 space-y-8  shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold text-center text-white">Contact Us</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="h-[65vh] sm:h-[50vh] bg-dark p-[5vw]  w-[350px] sm:w-[700px] lg:w-[800px] mx-auto ">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="rounded-lg shadow-xl py-10 sm:py-0 w-full"
+      >
+        <h2 className="text-4xl font-mono  mb-8 ">Contact Me</h2>
+        <form onSubmit={handleSubmit} className="px-5  ">
+          <div className=" sm:flex gap-5">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-white">
+            <label htmlFor="name" className="block text-sm font-medium text-wheat">
               Name
             </label>
             <input
@@ -36,11 +64,11 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="mt-1 block w-full px-3 py-2 border border-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black  min-w-[250px] lg:w-[300px]"
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-white">
+            <label htmlFor="email" className="mt-4 sm:mt-0 block text-sm font-medium text-wheat">
               Email
             </label>
             <input
@@ -50,33 +78,55 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 block w-full px-3 py-2 border border-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block  border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black min-w-[250px] lg:w-[300px]"
             />
           </div>
+          </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-white">
+            <label htmlFor="message" className="mt-4  block text-sm font-medium text-wheat">
               Message
             </label>
             <textarea
               name="message"
               id="message"
+              rows={4}
               value={formData.message}
               onChange={handleChange}
               required
-              className="mt-1 block w-full px-3 py-2 border border-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              rows={4}
-            />
+              className="mt-1 block text-black w-[250px] sm:w-[520px] lg:w-[620px] border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black"
+            ></textarea>
           </div>
           <div>
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              disabled={isSubmitting}
+              className="w-[150px]  mx-auto my-5 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
             >
-              Send Message
-            </button>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </motion.button>
           </div>
         </form>
-      </div>
+        {submitStatus === 'success' && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-4 text-green-600 text-center"
+          >
+            Message sent successfully!
+          </motion.p>
+        )}
+        {submitStatus === 'error' && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-4 text-red-600 text-center"
+          >
+            An error occurred. Please try again.
+          </motion.p>
+        )}
+      </motion.div>
     </div>
   );
 };
