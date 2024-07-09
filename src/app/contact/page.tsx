@@ -64,7 +64,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="mt-1 block border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black  min-w-[250px] lg:w-[300px]"
+              className="mt-1 block text-black border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black  min-w-[250px] lg:w-[300px]"
             />
           </div>
           <div>
@@ -78,7 +78,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 block  border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black min-w-[250px] lg:w-[300px]"
+              className="mt-1 block text-black border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black min-w-[250px] lg:w-[300px]"
             />
           </div>
           </div>
