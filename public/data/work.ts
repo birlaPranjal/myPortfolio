@@ -22,7 +22,7 @@ export const projects = [
     img: abhyu,
     tags: ["NextJS","FramerMotion "],
     description: "Culbs Official website.",
-    link: "https://pranjalbirla.tech/",
+    link: "https://abhyudaya-website-nine.vercel.app/",
   },
 ];
 
