@@ -7,6 +7,7 @@ import abhyu from '../assets/projects/abhyu.png'
 import movie from '../assets/projects/movie.png'
 import hoon from '../assets/projects/hoon.png'
 import market from '../assets/projects/market.png'
+import hackndore from '../assets/projects/hackndore.png'
 
 
 export const projects = [
@@ -18,9 +19,16 @@ export const projects = [
     link: "https://teamify.in",
   },
   {
+    title: "HackNdore",
+    img: hackndore,
+    tags: ["NextJS","FramerMotion "],
+    description: "A website for hackathons and coding competitions.",
+    link: "https://hackndore.in/",
+  },
+  {
     title: "Abhyudaya",
     img: abhyu,
-    tags: ["NextJS","FramerMotion "],
+    tags: ["NextJS","Optimizations" ,"MaterialUI"],
     description: "Culbs Official website.",
     link: "https://abhyudaya-website-nine.vercel.app/",
   },
