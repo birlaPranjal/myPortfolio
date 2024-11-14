@@ -5,7 +5,7 @@ import clgJagat from '../assets/projects/clgjagat.png';
 import ecomm from '../assets/projects/ecomm.png'
 import indorix from '../assets/projects/indorix.png'
 import movie from '../assets/projects/movie.png'
-import hoon from '../assets/projects/hoon.png'
+import travel from '../assets/projects/travel.png'
 import market from '../assets/projects/market.png'
 import hackndore from '../assets/projects/hackndore.png'
 
@@ -35,6 +35,13 @@ export const projects = [
 ];
 
 export const personalProjects = [
+  {
+    title: "Travel Buddy App",
+    img:travel ,
+    tags: ["Next JS", "API Gateway", "MongoDB"],
+    description: "The next generation payment method platform UI Clone and animations.",
+    link: "https://travelbudie.vercel.app/",
+  },
   {
     title: "Designity",
     img: designity,
@@ -68,13 +75,6 @@ export const personalProjects = [
     img:movie ,
     tags: ["React", "NodeMailer", "REST API"],
     description: "Moovie Villa: A platform to search movies and web series and get details about them.",
-    link: "https://pranjalbirla.tech/",
-  },
-  {
-    title: "HoonBank Clone",
-    img:hoon ,
-    tags: ["Vite", "Figma", "UI Clone"],
-    description: "The next generation payment method platform UI Clone and animations.",
     link: "https://pranjalbirla.tech/",
   },
 ]
