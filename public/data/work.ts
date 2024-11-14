@@ -3,7 +3,7 @@ import teamify from '../assets/projects/teamify.png';
 import designity from '../assets/projects/designity.png';
 import clgJagat from '../assets/projects/clgjagat.png';
 import ecomm from '../assets/projects/ecomm.png'
-import abhyu from '../assets/projects/abhyu.png'
+import indorix from '../assets/projects/indorix.png'
 import movie from '../assets/projects/movie.png'
 import hoon from '../assets/projects/hoon.png'
 import market from '../assets/projects/market.png'
@@ -11,6 +11,13 @@ import hackndore from '../assets/projects/hackndore.png'
 
 
 export const projects = [
+  {
+    title: "Indorix",
+    img: indorix,
+    tags: ["NextJS", "SupaBase", "DEV"],
+    description: "Indorix: A community for developers to share their projects and get feedback.",
+    link: "https://indorix.com",
+  },
   {
     title: "Teamify",
     img: teamify,
@@ -24,13 +31,6 @@ export const projects = [
     tags: ["NextJS","FramerMotion "],
     description: "A website for hackathons and coding competitions.",
     link: "https://hackndore.in/",
-  },
-  {
-    title: "Abhyudaya",
-    img: abhyu,
-    tags: ["NextJS","Optimizations" ,"MaterialUI"],
-    description: "Culbs Official website.",
-    link: "https://abhyudaya-website-nine.vercel.app/",
   },
 ];
 
