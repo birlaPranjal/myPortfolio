@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import img from "../../public/assets/rem-bg.png";
-import image from "../../public/assets/image.jpg";
+import image from "../../public/assets/image.png";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import Projects from "@/components/Projects";
 import {FlipWords} from "@/components/ui/flip-words"
