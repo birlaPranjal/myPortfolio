@@ -40,7 +40,7 @@ export const personalProjects = [
     img:travel ,
     tags: ["Next JS", "API Gateway", "MongoDB"],
     description: "The next generation payment method platform UI Clone and animations.",
-    link: "https://travelbudie.vercel.app/",
+    link: "https://travelbudyy.vercel.app/",
   },
   {
     title: "Designity",
