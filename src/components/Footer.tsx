@@ -52,7 +52,7 @@ export default function Footer() {
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <footer className="w-[80vw] sm:w-[70vw] md:w-[55vw] lg:w-[50vw] xl:w-[40vw] mx-auto">
+      <footer className="w-[80vw] sm:w-[70vw] md:w-[55vw] lg:w-[50vw] xl:w-[40vw] mx-auto text-black dark:text-white">
         <motion.div
           variants={itemVariants}
           className="text-[1.5rem] text-center sm:hidden"

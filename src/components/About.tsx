@@ -9,10 +9,10 @@ export function About() {
   }));
 
   return (
-    <div id='about' className="py-5 md:py-10 px-[5vw] w-[93vw] lg:px-0 overflow-hidden flex items-start justify-evenly flex-wrap glap-5 ">
+    <div id='about' className="py-5 md:py-10 px-[5vw] w-[93vw] lg:px-0 overflow-hidden flex items-start justify-evenly flex-wrap glap-5 text-black dark:text-white ">
       <div className=" md:w-2/5 lg:w-[55%] ">
         <div className="text-2xl font-bold mb-4">About Me</div>
-        <div className="text-gray-400 px-4">
+        <div className="text-black dark:text-gray-400 px-4">
           Hi, I&apos;m Pranjal Birla, a passionate software developer specializing in
           MERN Stack.I&apos;m dedicated to continuous learning and exploring new
           technologies. Currently, I&apos;m diving deeper into AI and ML, exploring

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Socials() {
   return (
-    <div className=" text-white text-[.75rem] md:text-[1rem] flex items-center justify-start flex-wrap gap-4 px-[10vw] ">
+    <div className=" text-black dark:text-white text-[.75rem] md:text-[1rem] flex items-center justify-start flex-wrap gap-4 px-[10vw] ">
         {socials.map((social , index )=>(
             <a
             key={index}
@@ -15,7 +15,7 @@ export default function Socials() {
           >
             <div className='flex items-center'>
             <div className = 'p-2 flex '>
-            <Image src={social.svg} alt="no img" />
+            <Image src={social.svg} alt="no img" className='text-black dark:text-white' />
             <span className="ml-3 hidden md:block">{social.name}</span>
             </div>
             </div>
