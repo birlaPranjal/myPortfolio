@@ -3,7 +3,11 @@ import { FaEye } from "react-icons/fa";
 import AnimatedNumbers from "react-animated-numbers";
 import axios from "axios";
 
-const ViewCount: React.FC = () => {
+interface ViewCountProps {
+  formatCount?: (count: number) => string;
+}
+
+const ViewCount: React.FC<ViewCountProps> = ({ formatCount }) => {
   const [count, setCount] = useState<number>(0);
   const [hasUpdated, setHasUpdated] = useState<boolean>(false);
 
@@ -36,15 +40,21 @@ const ViewCount: React.FC = () => {
     }
   }, [hasUpdated]);
 
+  // Format count with "k" notation
+  const formatViewCount = (num: number): string => {
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'k';
+    }
+    return num.toString();
+  };
+
+  // Use provided format function or default one
+  const displayCount = formatCount ? formatCount(count) : formatViewCount(count);
 
   return (
     <div className="flex items-center space-x-2">
       <FaEye className="text-xl" />
-      {/* <AnimatedNumbers
-        animateToNumber={count}
-        fontStyle={{ fontSize: 20 }}
-      /> */}
-      <div className='text-[1rem] md:text-[1.4rem]'>{count}</div>
+      <div className='text-[1rem] md:text-[1.4rem]'>{displayCount}</div>
     </div>
   );
 };
