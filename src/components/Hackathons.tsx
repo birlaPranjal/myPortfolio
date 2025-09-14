@@ -15,9 +15,9 @@ import { hackathonWins } from '../../public/data/hackathons';
  */
 export default function Hackathons() {
   return (
-    <div className="px-[5vw] py-12">
+    <div className="px-[5vw] py-12" role="section" aria-labelledby="hackathon-victories">
       {/* Section title with trophy emoji for visual appeal */}
-      <div className='text-2xl font-bold mb-8'>🏆 Hackathon Victories</div>
+      <div id="hackathon-victories" className='text-2xl font-bold mb-8'>🏆 Hackathon Victories</div>
       
       {/* Responsive grid layout - single column on mobile, two columns on desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
