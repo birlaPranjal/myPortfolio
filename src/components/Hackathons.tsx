@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { hackathonWins } from '../../public/data/hackathons';
+import { hackathonWins, type HackathonWin } from '../../public/data/hackathons';
 
 /**
  * Hackathons Component - Displays a grid of hackathon victory cards
@@ -22,7 +22,7 @@ export default function Hackathons() {
       {/* Responsive grid layout - single column on mobile, two columns on desktop */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Map through each hackathon victory to create individual cards */}
-        {hackathonWins.map((hackathon) => (
+        {hackathonWins.map((hackathon: HackathonWin) => (
           {/* Clickable link wrapper with group hover effects */}
           <Link 
             key={hackathon.id} 
