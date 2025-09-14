@@ -107,9 +107,11 @@ export default function HackathonDetailPage() {
             <div className="relative h-64 w-full">
               <Image
                 src={hackathon.img}
-                alt={hackathon.title}
+                alt={`${hackathon.title} - ${hackathon.projectName} project showcase`}
                 fill
                 className="object-cover"
+                priority={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#00A7E1] via-transparent to-transparent" />
             </div>
