@@ -1,26 +1,38 @@
+// Import necessary types and assets for hackathon data structure
 import { StaticImageData } from 'next/image';
 import hackathonPlaceholder from '../assets/hackathons/placeholder.svg';
 
+/**
+ * Interface defining the structure for hackathon victory data
+ * Contains all necessary information to display hackathon achievements
+ * and generate detailed pages for each victory
+ */
 export interface HackathonWin {
-  id: string;
-  title: string;
-  event: string;
-  position: string;
-  date: string;
-  location: string;
-  organizers: string[];
-  projectName: string;
-  projectDescription: string;
-  projectUrl?: string;
-  tags: string[];
-  teamMembers: string[];
-  achievements: string[];
-    description: string;
-    fullDescription: string;
-    img: StaticImageData;
+  id: string;                    // Unique identifier for URL routing
+  title: string;                 // Display name of the hackathon
+  event: string;                 // Official event name
+  position: string;              // Placement achieved (e.g., "1st Place")
+  date: string;                  // When the hackathon took place
+  location: string;              // Physical/virtual location
+  organizers: string[];          // List of organizing entities/people
+  projectName: string;           // Name of the winning project
+  projectDescription: string;    // Brief project description
+  projectUrl?: string;           // Optional live project URL
+  tags: string[];               // Technologies and skills used
+  teamMembers: string[];        // Names of team collaborators
+  achievements: string[];       // Key accomplishments and outcomes
+  description: string;          // Short summary for card display
+  fullDescription: string;      // Detailed story for individual pages
+  img: StaticImageData;         // Hero image for the hackathon
 }
 
+/**
+ * Array containing all hackathon victories with comprehensive details
+ * Each entry represents a significant achievement in competitive programming/development
+ * Used to generate both the overview section and individual detail pages
+ */
 export const hackathonWins: HackathonWin[] = [
+  // HackMIvo 2025 - First place victory with GhostWriter AI project
   {
     id: "hackmivo-2025",
     title: "HackMIvo 2025",
@@ -57,6 +69,7 @@ What made this project special wasn't just the technical implementation, but the
 
 The win was made even more rewarding with an unexpected internship offer from RentPrompts - We're RARE right after the announcement. The experience of caffeine-fueled creativity, intense collaboration, and bringing an innovative idea to life with my amazing teammates made this victory truly special.`
   },
+  // Moonhacks 2025 - First place victory representing Abhyudaya Coding Club
   {
     id: "moonhack25",
     title: "Moonhacks 2025",
@@ -95,6 +108,13 @@ This victory was particularly meaningful as we represented the Abhyudaya Coding 
   }
 ];
 
+/**
+ * Utility function to retrieve a specific hackathon by its unique identifier
+ * Used by the dynamic route pages to fetch and display individual hackathon details
+ * 
+ * @param id - The unique identifier of the hackathon to retrieve
+ * @returns The matching HackathonWin object or undefined if not found
+ */
 export const getHackathonById = (id: string): HackathonWin | undefined => {
   return hackathonWins.find(hackathon => hackathon.id === id);
 };
