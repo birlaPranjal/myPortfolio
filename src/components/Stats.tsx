@@ -91,7 +91,7 @@ export default function Stats() {
       initialValues[stat.id] = 0;
     });
     setAnimatedValues(initialValues);
-  }, []);
+  }, [stats]);
 
   // Intersection Observer to trigger animation
   useEffect(() => {
@@ -134,7 +134,7 @@ export default function Stats() {
         }));
       }, 16);
     });
-  }, [isVisible]);
+  }, [isVisible, stats]);
 
   return (
     <section 
@@ -149,7 +149,7 @@ export default function Stats() {
           📊 By the Numbers
         </h2>
         <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Quantifying my journey in software development and the impact I've made
+          Quantifying my journey in software development and the impact I&apos;ve made
         </p>
       </div>
 

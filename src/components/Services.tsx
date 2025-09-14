@@ -271,8 +271,8 @@ export default function Services() {
             Ready to Start Your Project?
           </h3>
           <p className="text-blue-100 mb-6 text-lg">
-            Let's discuss your ideas and create something amazing together. 
-            I'm here to help bring your vision to life with cutting-edge technology.
+            Let&apos;s discuss your ideas and create something amazing together. 
+            I&apos;m here to help bring your vision to life with cutting-edge technology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

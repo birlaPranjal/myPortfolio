@@ -186,7 +186,7 @@ export default function Timeline() {
       {/* Call to Action */}
       <div className="text-center mt-12">
         <p className="text-gray-400 mb-6">
-          Want to be part of my journey? Let's connect and create something amazing together!
+          Want to be part of my journey? Let&apos;s connect and create something amazing together!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
