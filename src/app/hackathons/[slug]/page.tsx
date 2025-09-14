@@ -1,4 +1,5 @@
 "use client";
+// React and Next.js imports for dynamic routing and client-side functionality
 import React from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -6,11 +7,27 @@ import Image from 'next/image';
 import { getHackathonById } from '../../../../public/data/hackathons';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 
+/**
+ * HackathonDetailPage Component - Dynamic page for individual hackathon details
+ * 
+ * This component creates detailed pages for each hackathon victory using Next.js dynamic routing.
+ * It fetches hackathon data based on the URL slug and displays comprehensive information
+ * including the full story, team details, technologies used, and achievements.
+ * 
+ * Route: /hackathons/[slug]
+ * Examples: /hackathons/hackmivo-2025, /hackathons/moonhack25
+ * 
+ * @returns JSX element containing the detailed hackathon page
+ */
 export default function HackathonDetailPage() {
+  // Extract the slug parameter from the URL using Next.js useParams hook
   const params = useParams();
   const slug = params.slug as string;
+  
+  // Fetch the specific hackathon data using the slug identifier
   const hackathon = getHackathonById(slug);
 
+  // Handle case where hackathon is not found (404-like behavior)
   if (!hackathon) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -28,12 +45,14 @@ export default function HackathonDetailPage() {
     );
   }
 
+  // Render the detailed hackathon page with full information
   return (
     <div className="min-h-screen relative">
+      {/* Animated background beams for visual appeal */}
       <BackgroundBeams className="-z-10" />
       
       <div className="px-[5vw] py-12 relative z-10">
-        {/* Back Button */}
+        {/* Navigation back button */}
         <Link 
           href="/"
           className="inline-flex items-center text-[#00A7E1] hover:text-white transition-colors mb-8"
@@ -41,7 +60,7 @@ export default function HackathonDetailPage() {
           ← Back to Portfolio
         </Link>
 
-        {/* Header */}
+        {/* Page header section with title, position badge, and project showcase */}
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white">
