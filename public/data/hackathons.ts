@@ -116,5 +116,20 @@ This victory was particularly meaningful as we represented the Abhyudaya Coding 
  * @returns The matching HackathonWin object or undefined if not found
  */
 export const getHackathonById = (id: string): HackathonWin | undefined => {
+  if (!id || typeof id !== 'string') {
+    console.warn('Invalid hackathon ID provided:', id);
+    return undefined;
+  }
+  
   return hackathonWins.find(hackathon => hackathon.id === id);
+};
+
+/**
+ * Get all available hackathon IDs for static generation
+ * Used by Next.js for pre-generating static pages
+ * 
+ * @returns Array of hackathon IDs
+ */
+export const getAllHackathonIds = (): string[] => {
+  return hackathonWins.map(hackathon => hackathon.id);
 };
