@@ -10,6 +10,11 @@ import Socials from "@/components/Socials"
 import EduSkill from "@/components/EduSkill";
 import {About} from "@/components/About";
 import Hackathons from "@/components/Hackathons";
+import Stats from "@/components/Stats";
+import Services from "@/components/Services";
+import Timeline from "@/components/Timeline";
+import Testimonials from "@/components/Testimonials";
+import Blog from "@/components/Blog";
 
 
 
@@ -54,9 +59,13 @@ export default function Home() {
       <BackgroundBeams className="-z-10"/>
     </div>
     <EduSkill/>
-    
+    <Stats/>
+    <Services/>
     <Projects/>
     <Hackathons/>
+    <Timeline/>
+    <Blog/>
+    <Testimonials/>
     <About/>
     
     <style jsx>{`
