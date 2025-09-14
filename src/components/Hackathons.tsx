@@ -23,7 +23,7 @@ export default function Hackathons() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Map through each hackathon victory to create individual cards */}
         {hackathonWins.map((hackathon: HackathonWin) => (
-          {/* Clickable link wrapper with group hover effects */}
+          // Clickable link wrapper with group hover effects
           <Link 
             key={hackathon.id} 
             href={`/hackathons/${hackathon.id}`}
