@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 interface StatItem {
   id: string;
@@ -27,8 +27,8 @@ export default function Stats() {
   const [animatedValues, setAnimatedValues] = useState<Record<string, number>>({});
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Statistics data
-  const stats: StatItem[] = [
+  // Statistics data - memoized to prevent re-creation on every render
+  const stats: StatItem[] = useMemo(() => [
     {
       id: 'projects',
       label: 'Projects Completed',
@@ -82,7 +82,7 @@ export default function Stats() {
       description: 'Clean, maintainable code written',
       color: 'from-indigo-500 to-blue-500'
     }
-  ];
+  ], []);
 
   // Initialize animated values
   useEffect(() => {

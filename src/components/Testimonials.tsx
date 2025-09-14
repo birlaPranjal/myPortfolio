@@ -98,7 +98,7 @@ export default function Testimonials() {
       {/* Call to Action */}
       <div className="text-center mt-12">
         <p className="text-gray-400 mb-6">
-          Ready to work together? Let's create something amazing!
+          Ready to work together? Let&apos;s create something amazing!
         </p>
         <a
           href="/contact"
