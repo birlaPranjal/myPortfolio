@@ -6,6 +6,33 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getHackathonById } from '../../../../public/data/hackathons';
 import { BackgroundBeams } from '@/components/ui/background-beams';
+import { Metadata } from 'next';
+
+/**
+ * Generate metadata for hackathon detail pages for better SEO
+ * Creates dynamic titles and descriptions based on hackathon data
+ */
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const hackathon = getHackathonById(params.slug);
+  
+  if (!hackathon) {
+    return {
+      title: 'Hackathon Not Found | Pranjal Birla',
+      description: 'The requested hackathon page could not be found.',
+    };
+  }
+
+  return {
+    title: `${hackathon.title} - ${hackathon.position} Victory | Pranjal Birla`,
+    description: `${hackathon.description} Learn about the ${hackathon.projectName} project and our journey to victory.`,
+    keywords: `hackathon, ${hackathon.title}, ${hackathon.projectName}, ${hackathon.tags.join(', ')}, programming competition`,
+    openGraph: {
+      title: `${hackathon.title} - ${hackathon.position} Victory`,
+      description: hackathon.description,
+      type: 'article',
+    },
+  };
+}
 
 /**
  * HackathonDetailPage Component - Dynamic page for individual hackathon details
