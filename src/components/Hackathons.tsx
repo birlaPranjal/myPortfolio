@@ -36,9 +36,11 @@ export default function Hackathons() {
               <div className="relative h-48 w-full mb-4">
                 <Image
                   src={hackathon.img}
-                  alt={hackathon.title}
+                  alt={`${hackathon.title} hackathon victory showcase`}
                   fill
                   className="object-cover"
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 {/* Gradient overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
