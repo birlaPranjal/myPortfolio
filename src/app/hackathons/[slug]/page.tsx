@@ -84,9 +84,33 @@ export default function HackathonDetailPage({ params }: { params: { slug: string
     );
   }
 
+  // Generate structured data for better SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": `${hackathon.title} - ${hackathon.position} Victory`,
+    "description": hackathon.description,
+    "author": {
+      "@type": "Person",
+      "name": "Pranjal Birla"
+    },
+    "datePublished": hackathon.date,
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": hackathon.projectName,
+      "description": hackathon.projectDescription
+    }
+  };
+
   // Render the detailed hackathon page with full information
   return (
     <div className="min-h-screen relative">
+      {/* Structured data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
       {/* Animated background beams for visual appeal */}
       <BackgroundBeams className="-z-10" />
       
