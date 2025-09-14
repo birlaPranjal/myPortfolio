@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getHackathonById } from '../../../../public/data/hackathons';
+import { getHackathonById, getAllHackathonIds } from '../../../../public/data/hackathons';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import { Metadata } from 'next';
 
@@ -30,6 +30,20 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       type: 'article',
     },
   };
+}
+
+/**
+ * Generate static paths for all hackathon pages at build time
+ * This enables static generation for better performance and SEO
+ * 
+ * @returns Array of static paths for pre-generation
+ */
+export async function generateStaticParams() {
+  const hackathonIds = getAllHackathonIds();
+  
+  return hackathonIds.map((id) => ({
+    slug: id,
+  }));
 }
 
 /**
