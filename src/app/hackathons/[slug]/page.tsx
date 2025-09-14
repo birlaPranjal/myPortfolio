@@ -1,7 +1,5 @@
-"use client";
-// React and Next.js imports for dynamic routing and client-side functionality
+// React and Next.js imports for server-side rendering and metadata generation
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getHackathonById } from '../../../../public/data/hackathons';
@@ -44,12 +42,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
  * Route: /hackathons/[slug]
  * Examples: /hackathons/hackmivo-2025, /hackathons/moonhack25
  * 
+ * @param params - The dynamic route parameters containing the slug
  * @returns JSX element containing the detailed hackathon page
  */
-export default function HackathonDetailPage() {
-  // Extract the slug parameter from the URL using Next.js useParams hook
-  const params = useParams();
-  const slug = params.slug as string;
+export default function HackathonDetailPage({ params }: { params: { slug: string } }) {
+  // Extract the slug parameter from the route params
+  const slug = params.slug;
   
   // Fetch the specific hackathon data using the slug identifier
   const hackathon = getHackathonById(slug);
