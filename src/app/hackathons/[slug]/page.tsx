@@ -1,0 +1,179 @@
+"use client";
+import React from 'react';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import { getHackathonById } from '../../../../public/data/hackathons';
+import { BackgroundBeams } from '@/components/ui/background-beams';
+
+export default function HackathonDetailPage() {
+  const params = useParams();
+  const slug = params.slug as string;
+  const hackathon = getHackathonById(slug);
+
+  if (!hackathon) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-white mb-4">Hackathon Not Found</h1>
+          <p className="text-gray-400 mb-8">The hackathon you&apos;re looking for doesn&apos;t exist.</p>
+          <Link 
+            href="/"
+            className="bg-[#00A7E1] text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            Back to Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen relative">
+      <BackgroundBeams className="-z-10" />
+      
+      <div className="px-[5vw] py-12 relative z-10">
+        {/* Back Button */}
+        <Link 
+          href="/"
+          className="inline-flex items-center text-[#00A7E1] hover:text-white transition-colors mb-8"
+        >
+          ← Back to Portfolio
+        </Link>
+
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-4 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              {hackathon.title}
+            </h1>
+            <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-4 py-2 rounded-full text-lg font-bold">
+              {hackathon.position}
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap gap-4 text-gray-400 mb-6">
+            <div>📍 {hackathon.location}</div>
+            <div>📅 {hackathon.date}</div>
+          </div>
+
+          <div className="bg-gradient-to-r from-[#00A7E1] to-blue-600 text-white rounded-lg overflow-hidden">
+            <div className="relative h-64 w-full">
+              <Image
+                src={hackathon.img}
+                alt={hackathon.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00A7E1] via-transparent to-transparent" />
+            </div>
+            <div className="p-6">
+              <h2 className="text-2xl font-bold mb-2">{hackathon.projectName}</h2>
+              <p className="text-lg opacity-90">{hackathon.projectDescription}</p>
+              {hackathon.projectUrl && (
+                <a 
+                  href={hackathon.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-4 bg-white text-[#00A7E1] px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                >
+                  View Project →
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Story */}
+          <div className="lg:col-span-2">
+            <div className="bg-gray-900 rounded-lg p-8 border border-gray-700">
+              <h3 className="text-2xl font-bold text-white mb-6">The Story</h3>
+              <div className="prose prose-invert max-w-none">
+                {hackathon.fullDescription.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-gray-300 mb-4 leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Team Members */}
+            <div className="bg-gray-900 rounded-lg p-6 border border-gray-700">
+              <h4 className="text-xl font-bold text-white mb-4">🤝 Team Members</h4>
+              <ul className="space-y-2">
+                {hackathon.teamMembers.map((member, index) => (
+                  <li key={index} className="text-gray-300">
+                    • {member}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technologies */}
+            <div className="bg-gray-900 rounded-lg p-6 border border-gray-700">
+              <h4 className="text-xl font-bold text-white mb-4">🛠️ Technologies</h4>
+              <div className="flex flex-wrap gap-2">
+                {hackathon.tags.map((tag, index) => (
+                  <span 
+                    key={index}
+                    className="bg-[#00A7E1] text-white px-3 py-1 rounded-full text-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Achievements */}
+            <div className="bg-gray-900 rounded-lg p-6 border border-gray-700">
+              <h4 className="text-xl font-bold text-white mb-4">🏆 Key Achievements</h4>
+              <ul className="space-y-2">
+                {hackathon.achievements.map((achievement, index) => (
+                  <li key={index} className="text-gray-300">
+                    ✓ {achievement}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Organizers */}
+            <div className="bg-gray-900 rounded-lg p-6 border border-gray-700">
+              <h4 className="text-xl font-bold text-white mb-4">🎯 Organizers</h4>
+              <ul className="space-y-1">
+                {hackathon.organizers.map((organizer, index) => (
+                  <li key={index} className="text-gray-300 text-sm">
+                    • {organizer}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="mt-12 text-center">
+          <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-lg p-8 border border-gray-700">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Interested in collaborating?
+            </h3>
+            <p className="text-gray-300 mb-6">
+              I&apos;m always excited to work on innovative projects and participate in hackathons. 
+              Let&apos;s build something amazing together!
+            </p>
+            <Link 
+              href="/contact"
+              className="bg-[#00A7E1] text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors inline-block"
+            >
+              Get in Touch
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

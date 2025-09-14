@@ -9,6 +9,7 @@ import {FlipWords} from "@/components/ui/flip-words"
 import Socials from "@/components/Socials"
 import EduSkill from "@/components/EduSkill";
 import {About} from "@/components/About";
+import Hackathons from "@/components/Hackathons";
 
 
 
@@ -55,6 +56,7 @@ export default function Home() {
     <EduSkill/>
     
     <Projects/>
+    <Hackathons/>
     <About/>
     
     <style jsx>{`
